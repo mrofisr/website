@@ -4,11 +4,17 @@ MAINTAINER Abdur Rofi <@mrofisr>
 
 RUN apk add yarn 
 
-RUN mkdir -p /app 
+# Create a group and user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
-ADD . /app
+# Tell docker that all future commands should run as the appuser user
+USER appuser
 
-WORKDIR /app
+RUN mkdir -p /home/appuser/app 
+
+ADD . /home/appuser/app
+
+WORKDIR /home/appuser/app
 
 RUN yarn install
 
