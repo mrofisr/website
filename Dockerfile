@@ -1,6 +1,6 @@
 FROM alpine:latest 
 
-MAINTAINER Abdur Rofi <@mrofisr>
+LABEL maintainer="Abdur Rofi <@mrofisr>"
 
 RUN apk add yarn 
 
